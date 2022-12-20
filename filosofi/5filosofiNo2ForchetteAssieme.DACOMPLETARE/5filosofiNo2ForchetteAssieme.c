@@ -64,23 +64,27 @@ void *filosofo (void *arg)
 		{
 			if (!forchettaoccupata[indiceforchetta1])
 		{
+			printf("%s prende la forchetta sinistra", Flabel);
 			DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
 		}
 
 		if (!forchettaoccupata[indiceforchetta2])
 		{
+			printf("%s prende la forchetta destra", Flabel);
 			DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
 		}
 		} else
 		{
 			if (!forchettaoccupata[indiceforchetta1])
 			{
-				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
+				/*printf("%s prende la forchetta sinistra", Flabel);*/
+				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
 			}
 
 			if (!forchettaoccupata[indiceforchetta2])
 			{
-				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
+				/*printf("%s prende la forchetta sinistra", Flabel);*/
+				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
 			}
 		}
 		
