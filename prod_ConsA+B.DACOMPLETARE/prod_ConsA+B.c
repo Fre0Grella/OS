@@ -125,6 +125,7 @@ void *Consumatore (void *arg)
 			/* aspetto arrivo del secondo consumatore (B) */
 			statoBuffer=SERVEConsB;
 			/* AGGIUNGERE CODICE */
+			DBGpthread_cond_signal(&condConsB, Clabel);
 			DBGpthread_cond_wait(&condSecondo, &mutex, Clabel);
 
 		} else { /* tipoCons==TIPOCONSB */
