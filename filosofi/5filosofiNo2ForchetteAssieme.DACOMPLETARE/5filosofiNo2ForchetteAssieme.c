@@ -64,26 +64,25 @@ void *filosofo (void *arg)
 		{
 			if (!forchettaoccupata[indiceforchetta1])
 		{
-			forchettaoccupata[indiceforchetta1]=1;
+			
 			DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
 		}
 
 		if (!forchettaoccupata[indiceforchetta2])
 		{
-			forchettaoccupata[indiceforchetta2]=1;
+			
 			DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
 		}
 		} else
 		{
 			if (!forchettaoccupata[indiceforchetta1])
 			{
-				forchettaoccupata[indiceforchetta1]=1;
+				
 				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
 			}
 
 			if (!forchettaoccupata[indiceforchetta2])
 			{
-				forchettaoccupata[indiceforchetta2]=1;
 				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
 			}
 		}
@@ -100,11 +99,9 @@ void *filosofo (void *arg)
 
 		/* il filosofo rilascia le forchette */
 		/* AGGIUNGERE CODICE */
-		forchettaoccupata[indiceforchetta1]=0;
-		forchettaoccupata[indiceforchetta2]=0;
+
 		DBGpthread_mutex_unlock(&mutexForchetta[indiceforchetta1], Flabel);
 		DBGpthread_mutex_unlock(&mutexForchetta[indiceforchetta2], Flabel);
-		
 
 		/* FINE AGGIUNTA CODICE */
 
