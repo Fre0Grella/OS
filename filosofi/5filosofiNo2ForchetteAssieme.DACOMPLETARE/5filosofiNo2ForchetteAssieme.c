@@ -60,7 +60,9 @@ void *filosofo (void *arg)
 			indiceforchetta2=indice-1;
 		}
 
-		if (!forchettaoccupata[indiceforchetta1])
+		if(indice%2 == 0)
+		{
+			if (!forchettaoccupata[indiceforchetta1])
 		{
 			DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
 		}
@@ -69,6 +71,19 @@ void *filosofo (void *arg)
 		{
 			DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
 		}
+		} else
+		{
+			if (!forchettaoccupata[indiceforchetta1])
+			{
+				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta1], Flabel);
+			}
+
+			if (!forchettaoccupata[indiceforchetta2])
+			{
+				DBGpthread_mutex_lock(&mutexForchetta[indiceforchetta2], Flabel);
+			}
+		}
+		
 		/* FINE AGGIUNTA CODICE */
 
 		/*  FILOSOFO MANGIA */
